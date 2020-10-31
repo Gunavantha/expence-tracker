@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const History = () => {
+export function History () {
 
   return (
     <>

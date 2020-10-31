@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Balance = () => {
+export function Balance() {
 
   return (
     <>
