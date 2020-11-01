@@ -1,14 +1,21 @@
 import React from 'react';
+import FlipMove from 'react-flip-move';
 
-export function History () {
+export function History ({transactions,deleteTransaction}) {
 
   return (
     <>
       <h3>History</h3>
       <ul id="list" class="list">
-         <li class="minus">
-          Cash <span>-$400</span><button class="delete-btn">x</button>
-        </li> 
+      <FlipMove duration={500}>
+        {transactions.map((transaction,index)=>(
+          <li key={index}  className={transaction.amount>0?"plus":"minus"}>
+          {transaction.reason} <span>{transaction.amount>0?"+":"-"}${Math.abs(transaction.amount)}</span>
+          <button value={index} onClick={(e)=>deleteTransaction(e.target.value)} className="delete-btn">x</button>
+        </li>
+
+        ))}
+        </FlipMove>
       </ul>
     </>
   )
